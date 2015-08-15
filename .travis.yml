@@ -16,6 +16,7 @@ services:
 - redis-server
 - cassandra
 before_script:
+- apt-get -V build-dep curl libc6 libcurl3 libcurl3-gnutls php5-curl apache2 libgnutls28 libcurl4-gnutls-dev
 - psql -c 'create database oauth2_server_php;' -U postgres
 - composer require predis/predis:dev-master
 - composer require thobbs/phpcassa:dev-master
