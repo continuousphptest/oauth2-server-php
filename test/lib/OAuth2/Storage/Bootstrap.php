@@ -327,10 +327,10 @@ class Bootstrap
     private function createPostgresDb()
     {
         if (!`psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='postgres'"`) {
-            `createuser -s -r postgres`;
+            `createuser -U postgres -s -r postgres`;
         }
 
-        `createdb -O postgres oauth2_server_php`;
+        `createdb -U postgres -O postgres oauth2_server_php`;
     }
 
     private function populatePostgresDb(\PDO $pdo)
