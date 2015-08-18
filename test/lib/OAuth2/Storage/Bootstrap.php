@@ -326,8 +326,8 @@ class Bootstrap
 
     private function createPostgresDb()
     {
-        if (!`psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='postgres'"`) {
-            `createuser -U postgres -s -r postgres`;
+        if (!`psql -U postgres postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='postgres'"`) {
+            `createuser -s -r postgres`;
         }
 
         `createdb -U postgres -O postgres oauth2_server_php`;
